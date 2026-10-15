@@ -1,17 +1,24 @@
 # Hide Apps Menu
 
-Hides the **Apps** menu (and the module list) from every non-administrator user.
+Hide the **Apps** menu and the module list from every non-administrator user.
 
 ## What it does
 
-Applies the **`base.group_system`** group ("Role / Administrator") to:
+This module restricts the following records to the **Administrator** group
+(`base.group_system`):
 
-- the root menu `base.menu_management` (**Apps**),
-- the submenu `base.menu_apps` (**Apps**),
-- the action `base.open_module_tree` (module list), so it cannot be opened
-  through a direct URL either.
+| Record | Type | Purpose |
+| --- | --- | --- |
+| `base.menu_management` | Menu | Root **Apps** menu |
+| `base.menu_apps` | Menu | **Apps** submenu |
+| `base.open_module_tree` | Action | Module list (`ir.module.module`) |
 
-As a result, only administrators can see and use the Apps menu.
+Because the underlying action is also restricted, non-administrators cannot
+reach the module list even through a direct URL. The result: only
+administrators see and use the Apps menu.
+
+The restriction is applied through a data file, so it is re-applied whenever
+the module is updated (`-u hide_apps_menu`).
 
 ## Installation
 
@@ -19,4 +26,15 @@ As a result, only administrators can see and use the Apps menu.
 odoo -d <database> -i hide_apps_menu --stop-after-init --no-http
 ```
 
-Compatible with Odoo 19.0.
+## Compatibility
+
+Odoo 19.0
+
+## Author
+
+Alitux — <https://github.com/Alitux>
+
+## License
+
+This module is released under the **GNU General Public License v2.0 (GPL-2.0)**.
+See the [LICENSE](LICENSE) file for the full text.
