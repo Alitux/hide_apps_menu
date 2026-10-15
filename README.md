@@ -36,5 +36,5 @@ Alitux — <https://github.com/Alitux>
 
 ## License
 
-This module is released under the **GNU General Public License v2.0 (GPL-2.0)**.
+This module is released under the **GNU General Public License v3.0 (GPL-3.0)**.
 See the [LICENSE](LICENSE) file for the full text.
