@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Restringe el menú "Apps" (raíz) y su submenú a administradores.
+        En Odoo 19 el campo de grupos (tanto en ir.ui.menu como en
+        ir.actions.act_window) se llama `group_ids`.
+        base.group_system = "Role / Administrator".
+    -->
+    <record id="base.menu_management" model="ir.ui.menu">
+        <field name="group_ids" eval="[(6, 0, [ref('base.group_system')])]"/>
+    </record>
+
+    <record id="base.menu_apps" model="ir.ui.menu">
+        <field name="group_ids" eval="[(6, 0, [ref('base.group_system')])]"/>
+    </record>
+
+    <!-- Bloquea también el acceso directo por URL a la acción del listado de Apps. -->
+    <record id="base.open_module_tree" model="ir.actions.act_window">
+        <field name="group_ids" eval="[(6, 0, [ref('base.group_system')])]"/>
+    </record>
+</odoo>
